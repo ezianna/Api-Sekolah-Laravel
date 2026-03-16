@@ -155,6 +155,20 @@ class GuruController extends Controller
             'collection' => [
                 'version' => '1.0',
                 'href' => url('/api/guru'),
+                'template' => [
+                'data' => [
+                    ['name' => 'user_id', 'value' => ''],
+                    ['name' => 'nip', 'value' => ''],
+                    ['name' => 'nama', 'value' => ''],
+                    ['name' => 'tempat_lahir', 'value' => ''],
+                    ['name' => 'tgl_lahir', 'value' => ''],
+                    ['name' => 'gender', 'value' => ''],
+                    ['name' => 'phone_number', 'value' => ''],
+                    ['name' => 'email', 'value' => ''],
+                    ['name' => 'alamat', 'value' => ''],
+                    ['name' => 'pendidikan', 'value' => '']
+                ]
+            ],
                 'links' => [
                     [
                         'rel' => 'create',
