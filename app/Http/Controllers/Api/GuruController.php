@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class GuruController extends Controller
 {
+    public function __construct()
+    {
+        // Menggunakan alias jwt.verify yang baru kita buat
+    $this->middleware('jwt.verify', ['except' => ['index', 'show']]);
+    }
     /*
     |--------------------------------------------------------------------------
     | Hypermedia Collection Response (Collection+JSON Style)
