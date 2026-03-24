@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Exception; // WAJIB ADA: Tanpa ini, catch (Exception $e) akan bikin Error 500
 use Illuminate\Http\Request;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
-use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\TokenExpiredException;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\TokenInvalidException;
 
@@ -16,6 +16,10 @@ class JwtMiddleware
         try {
             // Cek apakah token valid dan ambil data user
             $user = JWTAuth::parseToken()->authenticate();
+            
+            if (!$user) {
+                return response()->json(['status' => 'User not found'], 404);
+            }
         } catch (Exception $e) {
             if ($e instanceof TokenInvalidException) {
                 return response()->json(['status' => 'Token is Invalid'], 401);

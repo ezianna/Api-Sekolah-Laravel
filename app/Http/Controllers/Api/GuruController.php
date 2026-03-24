@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
 class GuruController extends Controller
 {
@@ -151,7 +152,6 @@ class GuruController extends Controller
         $guru->update($request->all());
         return $this->itemResponse($guru);
     }
-
     public function destroy(Guru $guru)
     {
         $guru->delete();
